@@ -26,6 +26,8 @@ app.get("/", (req, res) => {
   res.json({ message: "coded by tri ramdhani" });
 });
 
+app.use('/api/biodata', require('./app/route/biodata.route'))
+
 const PORT = process.env.PORT || 3500;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
