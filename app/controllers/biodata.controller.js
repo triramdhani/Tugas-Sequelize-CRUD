@@ -81,8 +81,8 @@ const getOneBiodata = asyncHandler( async(req, res) => {
 // @Route Patch /api/biodata
 // @acces private
 const updateBiodata = asyncHandler( async(req, res) => {
-  const {id, nama , tempat_lahir, tanggal_lahir} = req.body
-  if(!id || !nama  || !tempat_lahir || !tanggal_lahir){
+  const {id, nama , tempat_lahir,tanggal_lahir, Alamat} = req.body
+  if(!id || !nama  || !tempat_lahir || !tanggal_lahir || !Alamat){
     return res.status(400).json({message: `all field required`})
   }
   const biodata = await Biodata.findByPk(id)
@@ -91,6 +91,15 @@ const updateBiodata = asyncHandler( async(req, res) => {
   if(!biodata){
     return res.status(400).json({message: `biodata not found!`})
   }
+
+  biodata.nama = nama
+  biodata.tanggal_lahir = tanggal_lahir
+  biodata.tempat_lahir = tempat_lahir
+  biodata.Alamat = Alamat
+
+  const updatedBiodata = await biodata.save()
+  res.send({message: ` biodata with id ${id} succesfully edited`})
+  req.send(updatedBiodata)
 });
 
 // @desc update single biodata
