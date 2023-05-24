@@ -53,7 +53,7 @@ const getAllBiodata = asyncHandler(async(req, res) => {
 
 // Find a single Biodata with an id
 // @desc get single biodata
-// @Route Get /api/biodata/getOne
+// @Route Get /api/biodata/:id
 // @acces private
 const getOneBiodata = asyncHandler( async(req, res) => {
     const id = req.params.id;

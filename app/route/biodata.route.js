@@ -7,7 +7,7 @@ router.route('/')
     .post(biodataController.createNewBiodata)
     .patch(biodataController.updateBiodata)
     .delete(biodataController.deleteBiodata)
-router.route('/getOne')
+router.route('/:id')
     .get(biodataController.getOneBiodata)
 
 module.exports = router
