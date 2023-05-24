@@ -16,7 +16,7 @@ const createNewBiodata = asyncHandler(async(req, res) => {
       }
     
       const biodataObject = {
-        nama: req.body.title,
+        nama: req.body.nama,
         tempat_lahir: req.body.tempat_lahir,
         tanggal_lahir: req.body.tanggal_lahir ,
         Alamat: req.body.Alamat
