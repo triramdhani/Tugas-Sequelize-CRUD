@@ -98,8 +98,8 @@ const updateBiodata = asyncHandler( async(req, res) => {
   biodata.Alamat = Alamat
 
   const updatedBiodata = await biodata.save()
-  res.send({message: ` biodata with id ${id} succesfully edited`})
-  req.send(updatedBiodata)
+//   req.send(updatedBiodata) using this line if want to return updated data
+  res.status(200).json(`succes updated biodata with id = ${id}`)
 });
 
 // @desc update single biodata
@@ -108,17 +108,17 @@ const updateBiodata = asyncHandler( async(req, res) => {
 const deleteBiodata = asyncHandler( async(req, res) => {
     const id = req.params.id;
 
-    Tutorial.destroy({
+    Biodata.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Tutorial was deleted successfully!"
+            message: `biodata with id = ${id} was deleted successfully!`
           });
         } else {
           res.send({
-            message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
+            message: `Cannot delete Biodata with id=${id}. Maybe Tutorial was not found!`
           });
         }
       })
